@@ -7,7 +7,9 @@
     "512": "src/images/icon512.png"
   },
   "page_action": {
-    "default_icon": "src/images/icon32.png",
+    "default_icon": {
+      "32": "src/images/icon32.png"
+    },
     "default_popup": "src/page_action/page_action.html"
   },
   "options_page": "src/options/options.html",
