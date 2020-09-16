@@ -1,12 +1,11 @@
-// Saves options to chrome.storage
+// Saves settings to chrome.storage
 function save_options() {
   chrome.storage.sync.set({
     smallerFont: document.getElementById('smallerFont').checked
   });
 }
 
-// Restores select box and checkbox state using the preferences
-// stored in chrome.storage.
+// Get settings from chrome.storage
 function load_options() {
   chrome.storage.sync.get({
     smallerFont: true
