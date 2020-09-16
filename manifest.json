@@ -10,12 +10,17 @@
     "default_icon": "src/images/icon32.png",
     "default_popup": "src/page_action/page_action.html"
   },
-  "options_ui": {
-    "page": "src/options/options.html",
-    "open_in_tab": false
-  },
+  "options_page": "src/options/options.html",
+  // "options_ui": {
+  //   "page": "src/options/options.html",
+  //   "open_in_tab": false
+  // },
   "background": {
     "page": "src/background/background.html"
   },
-  "permissions": ["https://calimoto.com/*"]
+  "permissions": [
+    "storage",
+    "https://calimoto.com/*"
+  ]
+
 }

@@ -8,12 +8,13 @@
       font-size: 14px;
     }
 
-    .option-list {
+    .option-item {
       display: flex;
     }
 
     .option-item__description {
       flex: 1;
+      margin-left: 20px;
     }
 
     /* The switch - the box around the slider */
@@ -85,7 +86,7 @@
     <div class="option-item">
       <div class="option-item__input">
         <label class="switch">
-          <input type="checkbox">
+          <input type="checkbox" id="smallerFont" class="saveOnChange">
           <span class="slider round"></span>
         </label>
       </div>
@@ -94,5 +95,6 @@
       </div>
     </div>
   </div>
+  <script src="options.js"></script>
 </body>
 </html>
