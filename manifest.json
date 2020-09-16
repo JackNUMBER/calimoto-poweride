@@ -1,8 +1,9 @@
 {
   "name": "Calimoto Enhancer",
   "version": "0.1.0",
-  "manifest_version": 2,
   "description": "Add some welcome changes to Calimoto web Trip Planner",
+  "author": "Jack NUMBER",
+  "manifest_version": 2,
   "icons": {
     "512": "src/images/icon512.png"
   },
@@ -17,12 +18,19 @@
   //   "page": "src/options/options.html",
   //   "open_in_tab": false
   // },
-  "background": {
-    "page": "src/background/background.html"
-  },
   "permissions": [
     "storage",
     "https://calimoto.com/*"
+  ],
+  "content_scripts": [{
+    "matches": [
+      "https://calimoto.com/*"
+    ],
+    "js": [
+      "src/main.js",
+      "src/page_action/page_action.js"
+    ]
+  }],
+  "web_accessible_resources": [
   ]
-
 }
