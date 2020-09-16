@@ -1,0 +1,17 @@
+{
+  "name": "Calimoto Enhancer",
+  "version": "0.1.0",
+  "manifest_version": 2,
+  "description": "Add some welcome changes to Calimoto web Trip Planner",
+  "icons": {
+    "512": "src/images/icon512.png"
+  },
+  "page_action": {
+    "default_icon": "src/images/icon32.png",
+    "default_popup": "src/page_action/page_action.html"
+  },
+  "background": {
+    "page": "src/background/background.html"
+  },
+  "permissions": ["https://calimoto.com/*"]
+}

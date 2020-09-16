@@ -1,0 +1,17 @@
+{
+  "name": "Calimoto Enhancer",
+  "version": "0.1.0",
+  "manifest_version": 2,
+  "description": "Make Trip Planner easier with Google Maps features",
+  "icons": {
+    "512": "images/icon512.png"
+  },
+  "page_action": {
+    "default_icon": "images/icon32.png",
+    "default_popup": "page_action/page_action.html"
+  },
+  "background": {
+    "page": "background/background.html"
+  },
+  "permissions": ["https://calimoto.com/*"]
+}
