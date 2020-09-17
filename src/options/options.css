@@ -1,6 +1,29 @@
 body {
-  margin: 30px;
-  font-size: 14px;
+  margin: 0;
+  font-size: 15px;
+  width: 350px;
+  max-width: 100%;
+}
+
+header {
+  padding: 10px 20px;
+  font-size: 18px;
+  color: #ccc;
+  background-color: #434951;
+}
+
+header .icon {
+  width: 30px;
+  height: auto;
+  vertical-align: middle;
+  margin-right: 5px;
+  /* visual fix */
+  position: relative;
+  top: -1px;
+}
+
+.option-list {
+  padding: 30px 20px;
 }
 
 .option-item {
@@ -9,7 +32,7 @@ body {
 
 .option-item__description {
   flex: 1;
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 /* The switch - the box around the slider */
@@ -53,11 +76,11 @@ body {
 }
 
 input:checked+.slider {
-  background-color: #3367d6;
+  background-color: #be2d2d;
 }
 
 input:focus+.slider {
-  box-shadow: 0 0 1px #3367d6;
+  box-shadow: 0 0 1px #be2d2d;
 }
 
 input:checked+.slider:before {

@@ -11,14 +11,12 @@
     "default_icon": {
       "32": "src/images/icon32.png"
     },
-    "default_popup": "src/page_action/page_action.html"
+    "default_popup": "src/options/options.html"
   },
-  "options_page": "src/options/options.html",
-  // ouvre la page des options dans une popup (depuis les settings de l'extension)
-  // "options_ui": {
-  //   "page": "src/options/options.html",
-  //   "open_in_tab": false
-  // },
+  "options_ui": {
+    "page": "src/options/options.html",
+    "open_in_tab": false
+  },
   "permissions": [
     "storage",
     "https://calimoto.com/*"
