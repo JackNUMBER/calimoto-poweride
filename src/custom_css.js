@@ -98,5 +98,3 @@ const CustomStyles = {
     }
   }
 }
-
-CustomStyles.set();

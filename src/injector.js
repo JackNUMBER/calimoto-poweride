@@ -8,6 +8,8 @@ const init = () => {
 
   reactAppContainer = document.querySelector(reactAppSelector);
   CalimotoEnhancer.matches = true;
+
+  CustomStyles.set();
 }
 
 const timeout = () => {

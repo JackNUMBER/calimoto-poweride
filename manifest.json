@@ -28,8 +28,8 @@
     ],
     "js": [
       "src/main.js",
-      "src/injector.js",
-      "src/custom_css.js"
+      "src/custom_css.js",
+      "src/injector.js"
     ]
   }],
   "web_accessible_resources": [
