@@ -12,6 +12,12 @@ header {
   background-color: #434951;
 }
 
+header button {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+}
+
 header .icon {
   width: 30px;
   height: auto;
@@ -96,4 +102,22 @@ input:checked+.slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+button {
+  padding: 5px;
+  font-size: 13px;
+  color: #fff;
+  border: none;
+  background-color: #be2d2d;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #d43b3b;
+
+}
+
+.hidden {
+  display: none;
 }
