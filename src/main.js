@@ -1,3 +1,5 @@
+'use strict';
+
 window.CalimotoEnhancer = {
 
   matches: false,

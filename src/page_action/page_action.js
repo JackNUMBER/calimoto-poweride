@@ -1,3 +1,5 @@
+'use strict';
+
 const reactAppSelector = '.PlannerComponent';
 const browserHandle = CalimotoEnhancer.environment.getBrowserHandle();
 

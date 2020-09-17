@@ -1,9 +1,11 @@
+'use strict';
+
 const providerName = 'CalimotoEnhancer';
 
 /**
  * Manage new styles
  */
-CustomStyles = {
+const CustomStyles = {
   output: '',
 
   /**

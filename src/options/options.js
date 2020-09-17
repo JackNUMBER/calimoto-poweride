@@ -1,3 +1,5 @@
+'use strict';
+
 // Saves settings to chrome.storage
 function save_options() {
   chrome.storage.sync.set({

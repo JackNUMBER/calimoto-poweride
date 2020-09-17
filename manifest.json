@@ -14,6 +14,7 @@
     "default_popup": "src/page_action/page_action.html"
   },
   "options_page": "src/options/options.html",
+  // ouvre la page des options dans une popup (depuis les settings de l'extension)
   // "options_ui": {
   //   "page": "src/options/options.html",
   //   "open_in_tab": false
