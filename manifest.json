@@ -28,7 +28,7 @@
     ],
     "js": [
       "src/main.js",
-      "src/page_action/page_action.js",
+      "src/injector.js",
       "src/custom_css.js"
     ]
   }],
