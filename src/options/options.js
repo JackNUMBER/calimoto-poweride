@@ -5,7 +5,7 @@ const options = {
    * Saves settings to chrome.storage
    */
   save: () => {
-    chrome.storage.sync.set({
+    browserHandle.storage.sync.set({
       smallerFont: document.getElementById('smallerFont').checked
     });
 
@@ -16,7 +16,7 @@ const options = {
    * Get settings from chrome.storage
    */
   load: () => {
-    chrome.storage.sync.get({
+    browserHandle.storage.sync.get({
       smallerFont: true
     }, function(items) {
       document.getElementById('smallerFont').checked = items.smallerFont;
@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // refresh the page to apply settings
   // TODO: find a solution to update page UI without this button (Message Passing?)
   document.querySelector('#refresh').addEventListener('click', (e) => {
-    chrome.tabs.getSelected(null, function (tab) {
-      chrome.tabs.executeScript(tab.id, {
+    browserHandle.tabs.getSelected(null, function (tab) {
+      browserHandle.tabs.executeScript(tab.id, {
         code: 'window.location.reload();'
       });
     });

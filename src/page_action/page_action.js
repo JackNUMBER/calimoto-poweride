@@ -1,9 +1,7 @@
 'use strict';
 
-const reactAppSelector = '.PlannerComponent';
-const browserHandle = CalimotoEnhancer.environment.getBrowserHandle();
-
 let reactAppContainer;
+const reactAppSelector = '.PlannerComponent';
 
 const init = () => {
   console.log('🌮 Calimoto Enhancer started');

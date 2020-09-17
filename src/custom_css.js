@@ -64,7 +64,7 @@ const CustomStyles = {
     // CustomStyles.output += CustomStyles.getSearchBar();
     CustomStyles.output += CustomStyles.get('searchBar');
 
-    chrome.storage.sync.get(['smallerFont'], result => {
+    browserHandle.storage.sync.get(['smallerFont'], result => {
       if (result.smallerFont === true) {
         // CustomStyles.output += CustomStyles.getFontSize();
         CustomStyles.output += CustomStyles.get('fontSize');

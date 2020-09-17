@@ -16,3 +16,5 @@ window.CalimotoEnhancer = {
     }
   }
 }
+
+const browserHandle = CalimotoEnhancer.environment.getBrowserHandle();
