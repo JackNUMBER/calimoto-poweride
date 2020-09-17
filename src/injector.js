@@ -10,6 +10,7 @@ const init = () => {
   CalimotoEnhancer.matches = true;
 
   CustomStyles.set();
+  Waypoints.set();
 }
 
 const timeout = () => {
