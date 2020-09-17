@@ -19,7 +19,7 @@ const timeout = () => {
  * @param {string} selector the targeted selector we waiting for
  * @param {int} timeoutInSeconds time before considering the app is too long loading
  */
-function waitForAppReady(timeoutInSeconds = 10) {
+const waitForAppReady = (timeoutInSeconds = 10) => {
   return new Promise((resolve, reject) => {
     let waited = 0;
 
