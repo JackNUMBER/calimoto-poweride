@@ -1,8 +1,42 @@
+const providerName = 'CalimotoEnhancer';
+
+/**
+ * Manage new styles
+ */
 CustomStyles = {
+  output: '',
+
+  /**
+   * Store of custom styles
+   */
+  get: (styles) => {
+    switch (styles) {
+      case 'fontSize':
+        // smaller font-size
+        return `
+          html {
+            font-size: 14px;
+          }
+          html .SidebarRoutePointWrapper .AddressSearchAutocomplete {
+            height: 14px;
+          }
+        `;
+      case 'searchBar':
+        // bigger place search bar
+        return `
+          html .MAASearchAndLocation {
+            width: 450px;
+          }
+        `;
+      default:
+        return;
+    }
+
+  },
 
   // font size
-  applyFontSize: () => {
-    const fontSize_customStyles = `
+  getFontSize: () => {
+    return `
       html {
         font-size: 14px;
       }
@@ -10,33 +44,57 @@ CustomStyles = {
         height: 14px;
       }
     `;
-
-    fontSize_styleSheet = document.createElement('style');
-    fontSize_styleSheet.innerText = fontSize_customStyles;
-    document.head.appendChild(fontSize_styleSheet);
   },
 
   // search bar
-  applySearchBar: () => {
-    const searchbar_customStyles = `
+  getSearchBar: () => {
+    return `
       html .MAASearchAndLocation {
         width: 450px;
       }
     `;
-
-    searchbar_styleSheet = document.createElement('style');
-    searchbar_styleSheet.innerText = searchbar_customStyles;
-    document.head.appendChild(searchbar_styleSheet);
   },
+
+  /**
+   * Get all the needed styles before inject it
+   */
+  set: () => {
+    // CustomStyles.output += CustomStyles.getSearchBar();
+    CustomStyles.output += CustomStyles.get('searchBar');
+
+    chrome.storage.sync.get(['smallerFont'], result => {
+      if (result.smallerFont === true) {
+        // CustomStyles.output += CustomStyles.getFontSize();
+        CustomStyles.output += CustomStyles.get('fontSize');
+      }
+
+      CustomStyles.inject(CustomStyles.output);
+    });
+  },
+
+  /**
+   * Update the injected <style> without accurate properties
+   * Example: settings update
+   */
+  refresh: () => {
+    document.querySelector('style[provider=' + providerName + ']').remove();
+
+    CustomStyles.output = '';
+    CustomStyles.set();
+  },
+
+  /**
+   * Build the <style> element and add it to the page's <head>
+   * @param {string} content style properties inside the <style>
+   */
+  inject: (content) => {
+  if (content !== '') {
+      let styleSheets = document.createElement('style');
+      styleSheets.setAttribute('provider', providerName);
+      styleSheets.innerHTML = content;
+      document.head.appendChild(styleSheets);
+    }
+  }
 }
 
-// init
-// TODO: améliorer en concaténant tous les styles et en appliquant qu'une seule balise <style>
-chrome.storage.sync.get(['smallerFont'], result => {
-  console.log('smallerFont', result.smallerFont)
-  if (result.smallerFont === true) {
-    CustomStyles.applyFontSize();
-  }
-});
-
-CustomStyles.applySearchBar();
+CustomStyles.set();
