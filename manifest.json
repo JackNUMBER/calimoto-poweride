@@ -28,7 +28,8 @@
     ],
     "js": [
       "src/main.js",
-      "src/page_action/page_action.js"
+      "src/page_action/page_action.js",
+      "src/custom_css.js"
     ]
   }],
   "web_accessible_resources": [
