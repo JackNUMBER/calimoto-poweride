@@ -1,20 +1,14 @@
 'use strict';
 
-let reactAppContainer;
 const reactAppSelector = '.PlannerComponent';
 
 const init = () => {
   console.log('🌮 Calimoto Enhancer started');
 
-  reactAppContainer = document.querySelector(reactAppSelector);
   CalimotoEnhancer.matches = true;
 
   CustomStyles.set();
   Waypoints.set();
-}
-
-const timeout = () => {
-  console.error('Calimoto Enhancer waited 10 seconds and the Calimoto Trip Planner can\'t be found.');
 }
 
 /**
@@ -46,4 +40,4 @@ const waitForAppReady = (timeoutInSeconds = 10) => {
   })
 }
 
-const promise = waitForAppReady().then(init, timeout);
+const promise = waitForAppReady().then(init);
