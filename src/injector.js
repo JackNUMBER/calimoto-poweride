@@ -2,7 +2,10 @@
 
 const reactAppSelector = '.PlannerComponent';
 
-const init = () => {
+/**
+ * Init the Web Extension features
+ */
+const setup = () => {
   console.log('🌮 Calimoto Enhancer started');
 
   CalimotoEnhancer.matches = true;
@@ -40,4 +43,4 @@ const waitForAppReady = (timeoutInSeconds = 10) => {
   })
 }
 
-const promise = waitForAppReady().then(init);
+const promise = waitForAppReady().then(setup);
