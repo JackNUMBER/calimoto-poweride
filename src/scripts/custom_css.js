@@ -9,12 +9,13 @@ const CustomStyles = {
   output: '',
 
   /**
-   * Store of custom styles
+   * Custom styles' store
    */
   get: (styles) => {
     switch (styles) {
+
+      // smaller font-size
       case 'fontSize':
-        // smaller font-size
         return `
           html {
             font-size: 14px;
@@ -23,55 +24,34 @@ const CustomStyles = {
             height: 14px;
           }
         `;
+
+      // bigger place search bar
       case 'searchBar':
-        // bigger place search bar
         return `
           html .MAASearchAndLocation {
             width: 450px;
           }
         `;
+
       default:
         return;
     }
 
   },
 
-  // font size
-  getFontSize: () => {
-    return `
-      html {
-        font-size: 14px;
-      }
-      html .SidebarRoutePointWrapper .AddressSearchAutocomplete {
-        height: 14px;
-      }
-    `;
-  },
-
-  // search bar
-  getSearchBar: () => {
-    return `
-      html .MAASearchAndLocation {
-        width: 450px;
-      }
-    `;
-  },
-
   /**
    * Get all the needed styles before inject it
    */
   set: () => {
-    // CustomStyles.output += CustomStyles.getSearchBar();
     CustomStyles.output += CustomStyles.get('searchBar');
 
     browserHandle.storage.sync.get(['smallerFont'], result => {
       if (result.smallerFont === true) {
-        // CustomStyles.output += CustomStyles.getFontSize();
         CustomStyles.output += CustomStyles.get('fontSize');
       }
-
-      CustomStyles.inject(CustomStyles.output);
     });
+
+    CustomStyles.inject(CustomStyles.output);
   },
 
   /**
