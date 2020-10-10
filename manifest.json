@@ -1,6 +1,6 @@
 {
   "name": "Calimoto Enhancer",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Add some welcome changes to Calimoto web Trip Planner",
   "author": "Jack NUMBER",
   "manifest_version": 2,
@@ -34,5 +34,6 @@
     ]
   }],
   "web_accessible_resources": [
+    "src/inject_console_listener.js"
   ]
 }

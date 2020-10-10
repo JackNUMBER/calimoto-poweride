@@ -33,6 +33,21 @@ const CustomStyles = {
           }
         `;
 
+      // marker popup edit
+      case 'markerPopup':
+        return `
+          .PopupMarker .MapPopupMarkerAddressAndDeleteButton {
+            align-items: start;
+          }
+          .PopupMarker .MarkerAndPoiNameLink .location {
+            display: inline-block;
+            margin-bottom: 15px;
+          }
+          .PopupMarker .MarkerAndPoiNameLink .external-link i {
+            font-size: 22px;
+          }
+        `;
+
       default:
         return;
     }
@@ -50,6 +65,8 @@ const CustomStyles = {
         CustomStyles.output += CustomStyles.get('fontSize');
       }
     });
+
+    CustomStyles.output += CustomStyles.get('markerPopup');
 
     CustomStyles.inject(CustomStyles.output);
   },
