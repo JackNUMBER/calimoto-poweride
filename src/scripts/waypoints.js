@@ -22,7 +22,8 @@ const ConsoleInterceptor = {
         !!message.detail[0].properties
         && message.detail[0].properties.popupType === 'marker'
       ) {
-        PopUp.set(message.detail[0].properties);
+        Popup.markerProperties = message.detail[0].properties;
+        Popup.set();
       }
     });
   },
@@ -36,9 +37,11 @@ const ConsoleInterceptor = {
 };
 
 /**
- * Edit marker popup
+ * Edit marker Popup
  */
-const PopUp = {
+const Popup = {
+  markerProperties: '',
+
   waitForElementReady : (selector, timeoutInSeconds = 3) => {
     return new Promise((resolve, reject) => {
       let waited = 0;
@@ -63,18 +66,11 @@ const PopUp = {
     })
   },
 
-  edit: (properties) => {
-    // remove icon (to avoid a "launch" text at the end of the location)
-    document.querySelector('.PopupMarker .MarkerAndPoiNameLink a .material-icons').remove();
-
-    // get location name
-    const location = document.querySelector('.PopupMarker .MarkerAndPoiNameLink a').innerText;
-    document.querySelector('.PopupMarker .MarkerAndPoiNameLink a').remove();
-
-    const html = `
+  getExternalLinksHtml: (location) => {
+    return `
       <div class="calimoto-enhnancer">
         <span class="location">${location}</span>
-        <a href="https://www.instantstreetview.com/s/${properties.lat},${properties.lng}" target="_blank" class="external-link street-view" title="Street View">
+        <a href="https://www.instantstreetview.com/s/${Popup.markerProperties.lat},${Popup.markerProperties.lng}" target="_blank" class="external-link street-view" title="Street View">
           <svg viewBox="-467 269 24 24">
             <path style="fill:#FFFFFF;" d="M-455,278.3c2,0,3.6-1.6,3.6-3.6c0-2-1.6-3.6-3.6-3.6c-2,0-3.6,1.6-3.6,3.6
             C-458.7,276.6-457.1,278.3-455,278.3 M-457.6,282c0,0-1.1,3-1.4,3.5c-0.1,0.2-0.1,0.3-0.4,0.3c-0.3,0-0.7-0.3-0.7-0.3
@@ -84,7 +80,7 @@ const PopUp = {
           </svg>
         </a>
 
-        <a href="https://www.google.fr/maps/place/${properties.lat},${properties.lng}/@${properties.lat},${properties.lng},15z" target="_blank" class="external-link google-maps" title="Google Maps">
+        <a href="https://www.google.fr/maps/place/${Popup.markerProperties.lat},${Popup.markerProperties.lng}/@${Popup.markerProperties.lat},${Popup.markerProperties.lng},15z" target="_blank" class="external-link google-maps" title="Google Maps">
         <svg viewBox="-467 269 24 24">
           <path style="fill:#FFFFFF;" d="M-452.7,271.4c1.6,0.5,2.9,1.7,3.7,3.2l-3.2,3.8c0.1-0.4,0.1-0.6,0-1c0-0.3-0.2-0.6-0.3-0.9c-0.7-1.2-2.1-1.7-3.3-1.3
             L-452.7,271.4z M-457.7,279c-0.1-0.2-0.1-0.4-0.2-0.6c0-0.2,0-0.5,0-0.8l-3.2,3.8c0.6,1.2,1.5,2.3,2.3,3.4c0.2,0.3,0.4,0.5,0.6,0.7
@@ -95,7 +91,7 @@ const PopUp = {
         </svg>
         </a>
 
-        <a href="https://www.waze.com/ul?ll=${properties.lat},${properties.lng}&zoom=15" target="_blank" class="external-link waze" title="Waze">
+        <a href="https://www.waze.com/ul?ll=${Popup.markerProperties.lat},${Popup.markerProperties.lng}&zoom=15" target="_blank" class="external-link waze" title="Waze">
           <svg viewBox="-467 269 24 24">
             <path style="fill:#FFF;" d="M-446.5,275.6c0.7,0.9,1.1,2,1.4,3.2c0.2,1.3,0.1,2.5-0.3,3.7c-0.4,1.2-1.1,2.2-2,3.1
               c-0.7,0.6-1.4,1.2-2.3,1.6c0.4,1.1-0.1,2.3-1.2,2.7c-0.2,0.1-0.5,0.1-0.7,0.1c-1.1,0-2-0.9-2.1-2c-0.3,0-2.6,0-3.1,0
@@ -112,15 +108,25 @@ const PopUp = {
           </svg>
         </a>
       </div>
-    `;
-    document.querySelector('.PopupMarker .MarkerAndPoiNameLink').innerHTML = html;
+    `
   },
 
-  set: (properties) => {
+  edit: () => {
+    // remove icon (to avoid a "launch" text at the end of the location)
+    document.querySelector('.PopupMarker .MarkerAndPoiNameLink a .material-icons').remove();
+
+    // get location name
+    const location = document.querySelector('.PopupMarker .MarkerAndPoiNameLink a').innerText;
+    document.querySelector('.PopupMarker .MarkerAndPoiNameLink a').remove();
+
+    document.querySelector('.PopupMarker .MarkerAndPoiNameLink').innerHTML = Popup.getExternalLinksHtml(location);
+  },
+
+  set: () => {
     // check if the new UI is already set
     if (!!document.querySelector('.PopupMarker .MarkerAndPoiNameLink .calimoto-enhnancer')) return;
 
-    const promise = PopUp.waitForElementReady('.PopupMarker .MarkerAndPoiNameLink').then(() => PopUp.edit(properties));
+    const promise = Popup.waitForElementReady('.PopupMarker .MarkerAndPoiNameLink').then(() => Popup.edit());
   }
 };
 
