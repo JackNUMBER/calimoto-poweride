@@ -27,13 +27,6 @@ const ConsoleInterceptor = {
       }
     });
   },
-
-  giveOrder: () => {
-    /* Example: Send data from the page to your Chrome extension */
-    document.dispatchEvent(new CustomEvent('calimotoEnhancer_bip_bip', {
-      detail: GLOBALS // Some variable from Gmail.
-    }));
-  }
 };
 
 /**
@@ -134,10 +127,5 @@ const Waypoints = {
   set: () => {
     ConsoleInterceptor.inject();
     ConsoleInterceptor.listen();
-
-    // test
-    setTimeout(() => {
-      // ConsoleInterceptor.giveOrder();
-    }, 10000);
   }
 }
