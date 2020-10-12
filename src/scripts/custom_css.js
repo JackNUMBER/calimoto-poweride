@@ -41,10 +41,17 @@ const CustomStyles = {
           }
           .PopupMarker .MarkerAndPoiNameLink .location {
             display: inline-block;
-            margin-bottom: 15px;
+            margin-bottom: 5px;
           }
-          .PopupMarker .MarkerAndPoiNameLink .external-link i {
-            font-size: 22px;
+          .PopupMarker .MarkerAndPoiNameLink .external-link {
+            display: inline-block;
+          }
+          .PopupMarker .MarkerAndPoiNameLink .external-link.waze {
+            margin-left: 4px;
+          }
+          .PopupMarker .MarkerAndPoiNameLink .external-link svg {
+            width: 32px;
+            height: 32px;
           }
         `;
 
