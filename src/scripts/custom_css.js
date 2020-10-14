@@ -55,6 +55,17 @@ const CustomStyles = {
           }
         `;
 
+        case 'markerHighlight':
+        return `
+          .mapboxgl-marker img {
+            transition: filter 0.2s;
+          }
+          .mapboxgl-marker img:hover {
+            /*filter: drop-shadow(1px 1px rgba(56,61,68,0.8)) drop-shadow(-1px -1px rgba(56,61,68,0.8)) drop-shadow(1px -1px rgba(56,61,68,0.8)) drop-shadow(-1px 1px rgba(56,61,68,0.8));*/
+            // transform: scale(1.2)
+          }
+        `;
+
       default:
         return;
     }
@@ -74,6 +85,7 @@ const CustomStyles = {
     });
 
     CustomStyles.output += CustomStyles.get('markerPopup');
+    // CustomStyles.output += CustomStyles.get('markerHighlight');
 
     CustomStyles.inject(CustomStyles.output);
   },

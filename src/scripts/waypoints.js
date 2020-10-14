@@ -123,9 +123,54 @@ const Popup = {
   }
 };
 
+/**
+ * Highlight
+ * Use DOM to define point order
+ */
+const Highlight = {
+  sidebarPoints: '',
+
+  markers: '',
+
+  updateSidebarPoints: () => {
+    // get only points with value (to avoid empty/placeholder Start and End points)
+    Highlight.sidebarPoints = Array.from(document.querySelectorAll('.SidebarRoutePoints .SidebarRoutePointWrapper')).filter(item => item.querySelector('input').getAttribute('value') !== '');
+
+    Highlight.sidebarPoints.forEach((element, index) => {
+      element.addEventListener('mouseover', event => {
+        document.querySelector(`[waypoints-markers-index="${index}"]`).style.transform = 'scale(1.2)';
+        event.currentTarget.style.backgroundColor = '#454b54';
+      });
+    });
+  },
+
+  updateMarkers: () => {
+    Highlight.markers = document.querySelectorAll('.MapWrapper .mapboxgl-marker img');
+    Highlight.markers.forEach((element, index) => {
+      element.setAttribute('waypoints-markers-index', index);
+    });
+  },
+
+  marker: (index) => {
+    console.log("Highlight.marker", Highlight.markers.item(index));
+  },
+
+  listHasBeenUpdated: () => {
+    Highlight.updateMarkers();
+    Highlight.updateSidebarPoints();
+  },
+
+  set: () => {}
+};
+
 const Waypoints = {
   set: () => {
     ConsoleInterceptor.inject();
     ConsoleInterceptor.listen();
+
+    // for test waiting marker list change detection
+    setTimeout(() => {
+      Highlight.listHasBeenUpdated();
+    }, 10000);
   }
 }
