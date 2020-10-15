@@ -36,6 +36,10 @@ header .icon {
   display: flex;
 }
 
+.option-item + .option-item {
+  margin-top: 25px;
+}
+
 .option-item__description {
   flex: 1;
   margin-left: 10px;

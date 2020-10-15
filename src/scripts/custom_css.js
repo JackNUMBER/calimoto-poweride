@@ -65,17 +65,18 @@ const CustomStyles = {
    * Get all the needed styles before inject it
    */
   set: () => {
-    CustomStyles.output += CustomStyles.get('searchBar');
-
-    browserHandle.storage.sync.get(['smallerFont'], result => {
+    browserHandle.storage.sync.get(['smallerFont', 'biggerSearchbar', 'markerLinks'], result => {
       if (result.smallerFont === true) {
         CustomStyles.output += CustomStyles.get('fontSize');
       }
+      if (result.biggerSearchbar === true) {
+        CustomStyles.output += CustomStyles.get('searchBar');
+      }
+      if (result.markerLinks === true) {
+        CustomStyles.output += CustomStyles.get('markerPopup');
+      }
+      CustomStyles.inject(CustomStyles.output);
     });
-
-    CustomStyles.output += CustomStyles.get('markerPopup');
-
-    CustomStyles.inject(CustomStyles.output);
   },
 
   /**

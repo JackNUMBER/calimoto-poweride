@@ -117,6 +117,7 @@ const Popup = {
 
   set: () => {
     // check if the new UI is already set
+    // currently buggy: if the user click on an other marker, the UI is not refreshed (then link on icon doesn't)
     if (!!document.querySelector('.PopupMarker .MarkerAndPoiNameLink .calimoto-enhnancer')) return;
 
     const promise = Popup.waitForElementReady('.PopupMarker .MarkerAndPoiNameLink').then(() => Popup.edit());

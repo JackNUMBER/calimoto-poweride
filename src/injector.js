@@ -11,7 +11,12 @@ const setup = () => {
   CalimotoEnhancer.matches = true;
 
   CustomStyles.set();
-  Waypoints.set();
+
+  browserHandle.storage.sync.get(['markerLinks'], result => {
+    if (result.markerLinks === true) {
+      Waypoints.set();
+    }
+  });
 }
 
 /**

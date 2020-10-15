@@ -6,7 +6,9 @@ const options = {
    */
   save: () => {
     browserHandle.storage.sync.set({
-      smallerFont: document.getElementById('smallerFont').checked
+      smallerFont: document.getElementById('smallerFont').checked,
+      biggerSearchbar: document.getElementById('biggerSearchbar').checked,
+      markerLinks: document.getElementById('markerLinks').checked,
     });
 
     document.querySelector('#refresh').classList.remove('hidden');
@@ -17,9 +19,13 @@ const options = {
    */
   load: () => {
     browserHandle.storage.sync.get({
-      smallerFont: true
+      smallerFont: true,
+      biggerSearchbar: true,
+      markerLinks: true
     }, function(items) {
       document.getElementById('smallerFont').checked = items.smallerFont;
+      document.getElementById('biggerSearchbar').checked = items.biggerSearchbar;
+      document.getElementById('markerLinks').checked = items.markerLinks;
     });
   },
 }
@@ -31,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // refresh the page to apply settings
   // TODO: find a solution to update page UI without this button (Message Passing?)
   document.querySelector('#refresh').addEventListener('click', (e) => {
-    browserHandle.tabs.getSelected(null, function (tab) {
+    browserHandle.tabs.getSelected(null, function(tab) {
       browserHandle.tabs.executeScript(tab.id, {
         code: 'window.location.reload();'
       });
