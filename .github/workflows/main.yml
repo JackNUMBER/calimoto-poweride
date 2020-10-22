@@ -1,0 +1,53 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # >>> https://github.com/marketplace/actions/version-check
+      - name: Check if version has been updated
+        id: checkVersion # This will be the reference for getting the outputs.
+        uses: EndBug/version-check@v1 # You can choose the version/branch you prefer.
+
+        with: # All these parameters are optional, check their descriptions to see if you need them.
+
+          # Whether to search in every commit's diff.
+          # This is useful if you often do change the version manually without including it in the title. If you only use `npm version` to bump versions then you can omit this.
+          # Default: false
+          diff-search: true
+
+          # You can use this to indicate a custom path to your `package.json`. If you keep your package file in the root directory (as every normal person would do) you can omit this.
+          # Default: package.json
+          file-name: ./manifest.json
+
+          # You can put your bearer GitHub token here. This is needed only when running the action on private repostiories, if you're running it on a public repo you can omit this.
+          # If you need to set this, you can use the built-in `GITHUB_TOKEN` secret that GitHub generates for your repo's actions: you cna find more info about it here:
+          # https://help.github.com/en/github/automating-your-workflow-with-github-actions/virtual-environments-for-github-actions#github_token-secret
+          # Default: ''
+          token: ${{ secrets.PRIVATE_TOKEN }}
+
+      - name: Log when changed
+        if: steps.checkVersion.outputs.changed == 'true'
+        run: 'echo "Version change found in commit ${{ steps.checkVersion.outputs.commit }}! New version: ${{ steps.checkVersion.outputs.version }} (${{ steps.checkVersion.outputs.type }})"'
+
+      - name: Log when unchanged
+        if: steps.checkVersion.outputs.changed != 'true'
+        run: 'echo "No version change :/"'
