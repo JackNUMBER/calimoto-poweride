@@ -1,28 +1,19 @@
-# This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Auto-release
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  create-release:
+    name: Create Release
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # >>> https://github.com/marketplace/actions/version-check
+      # https://github.com/marketplace/actions/version-check
       - name: Check if version has been updated
         id: checkVersion # This will be the reference for getting the outputs.
         uses: EndBug/version-check@v1 # You can choose the version/branch you prefer.
@@ -44,10 +35,10 @@ jobs:
           # Default: ''
           token: ${{ secrets.PRIVATE_TOKEN }}
 
-      - name: Log when changed
+      - name: Version has changed
         if: steps.checkVersion.outputs.changed == 'true'
-        run: 'echo "Version change found in commit ${{ steps.checkVersion.outputs.commit }}! New version: ${{ steps.checkVersion.outputs.version }} (${{ steps.checkVersion.outputs.type }})"'
+        run: 'echo "New version: ${{ steps.checkVersion.outputs.version }} (${{ steps.checkVersion.outputs.type }})"'
 
-      - name: Log when unchanged
+      - name: Version doesn't change
         if: steps.checkVersion.outputs.changed != 'true'
-        run: 'echo "No version change :/"'
+        run: 'echo "No version change."'
