@@ -14,6 +14,14 @@ const CustomStyles = {
   get: (styles) => {
     switch (styles) {
 
+      // global design fixes
+      case 'base':
+        return `
+          .MuiListItem-root {
+            white-space: nowrap;
+          }
+        `;
+
       // smaller font-size
       case 'fontSize':
         return `
@@ -66,6 +74,7 @@ const CustomStyles = {
    */
   set: () => {
     browserHandle.storage.sync.get(['smallerFont', 'biggerSearchbar', 'markerLinks'], result => {
+      CustomStyles.output += CustomStyles.get('base');
       if (result.smallerFont === true) {
         CustomStyles.output += CustomStyles.get('fontSize');
       }
