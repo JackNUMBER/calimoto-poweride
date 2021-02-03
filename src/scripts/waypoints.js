@@ -59,10 +59,9 @@ const Popup = {
     })
   },
 
-  getExternalLinksHtml: (location) => {
+  getExternalLinksHtml: () => {
     return `
       <div class="calimoto-enhnancer">
-        <span class="location">${location}</span>
         <a href="https://www.instantstreetview.com/s/${Popup.markerProperties.lat},${Popup.markerProperties.lng}" target="_blank" class="external-link street-view" title="Street View">
           <svg viewBox="-467 269 24 24">
             <path style="fill:#FFFFFF;" d="M-455,278.3c2,0,3.6-1.6,3.6-3.6c0-2-1.6-3.6-3.6-3.6c-2,0-3.6,1.6-3.6,3.6
@@ -105,21 +104,17 @@ const Popup = {
   },
 
   edit: () => {
-    // remove icon (to avoid a "launch" text at the end of the location)
-    document.querySelector('.PopupMarker .MarkerAndPoiNameLink a .material-icons').remove();
+    const markerPopupInner = document.querySelector('.PopupMarker .MarkerAndPoiNameLink');
 
-    // get location name
-    const location = document.querySelector('.PopupMarker .MarkerAndPoiNameLink a').innerText;
-    document.querySelector('.PopupMarker .MarkerAndPoiNameLink a').remove();
-
-    document.querySelector('.PopupMarker .MarkerAndPoiNameLink').innerHTML = Popup.getExternalLinksHtml(location);
+    // check if the new UI is already set
+    if (markerPopupInner.querySelector('.calimoto-enhnancer')) {
+      markerPopupInner.querySelector('.calimoto-enhnancer').innerHTML = Popup.getExternalLinksHtml();
+    } else {
+      markerPopupInner.insertAdjacentHTML('beforeend', Popup.getExternalLinksHtml());
+    }
   },
 
   set: () => {
-    // check if the new UI is already set
-    // currently buggy: if the user click on an other marker, the UI is not refreshed (then link on icon doesn't)
-    if (!!document.querySelector('.PopupMarker .MarkerAndPoiNameLink .calimoto-enhnancer')) return;
-
     const promise = Popup.waitForElementReady('.PopupMarker .MarkerAndPoiNameLink').then(() => Popup.edit());
   }
 };
