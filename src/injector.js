@@ -12,7 +12,7 @@ const setup = () => {
 
   CustomStyles.set();
 
-  browserHandle.storage.sync.get(['markerLinks'], result => {
+  browserHandle.storage.local.get(['markerLinks'], result => {
     if (result.markerLinks === true) {
       Waypoints.set();
     }

@@ -5,7 +5,7 @@ const options = {
    * Saves settings to chrome.storage
    */
   save: () => {
-    browserHandle.storage.sync.set({
+    browserHandle.storage.local.set({
       smallerFont: document.getElementById('smallerFont').checked,
       biggerSearchbar: document.getElementById('biggerSearchbar').checked,
       markerLinks: document.getElementById('markerLinks').checked,
@@ -18,17 +18,18 @@ const options = {
    * Get settings from chrome.storage
    */
   load: () => {
-    browserHandle.storage.sync.get({
+    browserHandle.storage.local.get({
       smallerFont: true,
       biggerSearchbar: true,
       markerLinks: true
-    }, function(items) {
-      document.getElementById('smallerFont').checked = items.smallerFont;
-      document.getElementById('biggerSearchbar').checked = items.biggerSearchbar;
-      document.getElementById('markerLinks').checked = items.markerLinks;
+    }, function(result) {
+      document.getElementById('smallerFont').checked = result.smallerFont;
+      document.getElementById('biggerSearchbar').checked = result.biggerSearchbar;
+      document.getElementById('markerLinks').checked = result.markerLinks;
     });
   },
 }
+
 
 // when HTML is ready (no matter all assets are loaded)
 document.addEventListener('DOMContentLoaded', () => {

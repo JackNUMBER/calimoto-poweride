@@ -73,7 +73,7 @@ const CustomStyles = {
    * Get all the needed styles before inject it
    */
   set: () => {
-    browserHandle.storage.sync.get(['smallerFont', 'biggerSearchbar', 'markerLinks'], result => {
+    browserHandle.storage.local.get(['smallerFont', 'biggerSearchbar', 'markerLinks'], result => {
       CustomStyles.output += CustomStyles.get('base');
       if (result.smallerFont === true) {
         CustomStyles.output += CustomStyles.get('fontSize');
