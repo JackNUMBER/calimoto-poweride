@@ -4,7 +4,7 @@ name: Auto-release
 on:
   push:
     branches: [ master ]
-
+    paths: 'manifest.json'
 jobs:
   create-release:
     name: Create Release
@@ -15,30 +15,27 @@ jobs:
 
       # https://github.com/marketplace/actions/version-check
       - name: Check if version has been updated
-        id: checkVersion # This will be the reference for getting the outputs.
-        uses: EndBug/version-check@v1 # You can choose the version/branch you prefer.
+        id: checkVersion
+        uses: EndBug/version-check@v1
 
-        with: # All these parameters are optional, check their descriptions to see if you need them.
-
+        with:
           # Whether to search in every commit's diff.
           # This is useful if you often do change the version manually without including it in the title. If you only use `npm version` to bump versions then you can omit this.
           # Default: false
           diff-search: true
 
-          # You can use this to indicate a custom path to your `package.json`. If you keep your package file in the root directory (as every normal person would do) you can omit this.
-          # Default: package.json
           file-name: ./manifest.json
 
-          # You can put your bearer GitHub token here. This is needed only when running the action on private repostiories, if you're running it on a public repo you can omit this.
-          # If you need to set this, you can use the built-in `GITHUB_TOKEN` secret that GitHub generates for your repo's actions: you cna find more info about it here:
-          # https://help.github.com/en/github/automating-your-workflow-with-github-actions/virtual-environments-for-github-actions#github_token-secret
-          # Default: ''
+          # Only needed when running the action on private repostiories
           token: ${{ secrets.PRIVATE_TOKEN }}
-
-      - name: Version has changed
-        if: steps.checkVersion.outputs.changed == 'true'
-        run: 'echo "New version: ${{ steps.checkVersion.outputs.version }} (${{ steps.checkVersion.outputs.type }})"'
 
       - name: Version doesn't change
         if: steps.checkVersion.outputs.changed != 'true'
-        run: 'echo "No version change."'
+        uses: andymckay/cancel-action@0.2
+
+      - name: Create Tag
+        if: steps.checkVersion.outputs.changed == 'true'
+        uses: negz/create-tag@v1
+        with:
+          version: v${{ steps.checkVersion.outputs.version }}
+          token: ${{ secrets.PRIVATE_TOKEN }}
