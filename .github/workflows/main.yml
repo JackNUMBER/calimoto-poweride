@@ -4,7 +4,7 @@ name: Auto-release
 on:
   push:
     branches: [ master ]
-    # paths: 'manifest.json'
+    paths: 'manifest.json'
 jobs:
   create-release:
     name: Create Release
@@ -50,4 +50,21 @@ jobs:
           release_name: v${{ steps.checkVersion.outputs.version }}
           body: ${{ steps.changelog.outputs.changes }}
 
+      - name: Update Changelog
+        if: steps.checkVersion.outputs.changed == 'true'
+        run: sed -i "/^## \[Unreleased\]/a\\\n\## [v${{ steps.checkVersion.outputs.version }}] - $(date +%Y-%m-%d)" CHANGELOG.md
 
+      - name: Commit Changelog update
+        if: steps.checkVersion.outputs.changed == 'true'
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add CHANGELOG.md
+          git commit -m "Update CHANGELOG.md (v${{ steps.checkVersion.outputs.version }})" -a
+
+      - name: Push Changelog update
+        if: steps.checkVersion.outputs.changed == 'true'
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.PRIVATE_TOKEN }}
+          branch: ${{ github.ref }}
