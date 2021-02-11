@@ -1,7 +1,9 @@
-## Unreleased
+# Changelog
+
+## [Unreleased]
 ### Added
 - Quick design fix on "More" panel (below points list)
-### Fix
+### Fixed
 - Extension now working on Firefox
 - Some improvement in setting panel
 

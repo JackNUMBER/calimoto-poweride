@@ -27,6 +27,12 @@ jobs:
         if: steps.checkVersion.outputs.changed != 'true'
         uses: andymckay/cancel-action@0.2
 
+      - name: Get Changelog Entry
+        id: changelog
+        uses: mindsers/changelog-reader-action@v2
+        with:
+          version: Unreleased
+
       - name: Create Tag
         if: steps.checkVersion.outputs.changed == 'true'
         uses: negz/create-tag@v1
@@ -42,7 +48,6 @@ jobs:
         with:
           tag_name: v${{ steps.checkVersion.outputs.version }}
           release_name: v${{ steps.checkVersion.outputs.version }}
-          body: |
-            Changes in this Release
-            - First Change
-            - Second Change
+          body: ${{ steps.changelog.outputs.changes }}
+
+
