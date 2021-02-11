@@ -4,7 +4,7 @@ name: Auto-release
 on:
   push:
     branches: [ master ]
-    paths: 'manifest.json'
+    # paths: 'manifest.json'
 jobs:
   create-release:
     name: Create Release
@@ -13,19 +13,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      # https://github.com/marketplace/actions/version-check
       - name: Check if version has been updated
         id: checkVersion
         uses: EndBug/version-check@v1
 
         with:
-          # Whether to search in every commit's diff.
-          # This is useful if you often do change the version manually without including it in the title. If you only use `npm version` to bump versions then you can omit this.
-          # Default: false
           diff-search: true
-
           file-name: ./manifest.json
-
           # Only needed when running the action on private repostiories
           token: ${{ secrets.PRIVATE_TOKEN }}
 
@@ -39,3 +33,16 @@ jobs:
         with:
           version: v${{ steps.checkVersion.outputs.version }}
           token: ${{ secrets.PRIVATE_TOKEN }}
+
+      - name: Create Release
+        if: steps.checkVersion.outputs.changed == 'true'
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.PRIVATE_TOKEN }}
+        with:
+          tag_name: v${{ steps.checkVersion.outputs.version }}
+          release_name: v${{ steps.checkVersion.outputs.version }}
+          body: |
+            Changes in this Release
+            - First Change
+            - Second Change
