@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased]
+
+## [1.0.2] - 2021-02-15
 ### Added
 - Quick design fix on "More" panel (below points list)
 ### Fixed
