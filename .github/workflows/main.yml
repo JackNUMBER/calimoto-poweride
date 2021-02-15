@@ -52,7 +52,7 @@ jobs:
 
       - name: Update Changelog
         if: steps.checkVersion.outputs.changed == 'true'
-        run: sed -i "/^## \[Unreleased\]/a\\\n\## [v${{ steps.checkVersion.outputs.version }}] - $(date +%Y-%m-%d)" CHANGELOG.md
+        run: sed -i "/^## \[Unreleased\]/a\\\n\## [${{ steps.checkVersion.outputs.version }}] - $(date +%Y-%m-%d)" CHANGELOG.md
 
       - name: Commit Changelog update
         if: steps.checkVersion.outputs.changed == 'true'
