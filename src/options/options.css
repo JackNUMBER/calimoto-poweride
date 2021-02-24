@@ -45,6 +45,11 @@ header .icon {
   margin-left: 10px;
 }
 
+.option-item__description small {
+  display: block;
+  color: #818c9a;
+}
+
 /* The switch - the box around the slider */
 .switch {
   position: relative;

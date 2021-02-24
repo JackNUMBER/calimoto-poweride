@@ -14,13 +14,27 @@
     <div class="option-item">
       <div class="option-item__input">
         <label class="switch">
+          <input type="checkbox" id="markerLinks" class="saveOnChange">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <label class="option-item__description" for="markerLinks">
+        Links to Maps and Waze
+        <small>Display exertnal links on the marker popup</small>
+      </label>
+    </div>
+
+    <div class="option-item">
+      <div class="option-item__input">
+        <label class="switch">
           <input type="checkbox" id="smallerFont" class="saveOnChange">
           <span class="slider round"></span>
         </label>
       </div>
-      <div class="option-item__description">
+      <label class="option-item__description" for="smallerFont">
         Smaller font size
-      </div>
+        <small>Reduce global font size for better readability</small>
+      </label>
     </div>
 
     <div class="option-item">
@@ -30,22 +44,12 @@
           <span class="slider round"></span>
         </label>
       </div>
-      <div class="option-item__description">
-        Bigger searchbar
-      </div>
+      <label class="option-item__description" for="biggerSearchbar">
+        Bigger map searchbar
+        <small>Increase searchbar size to display more text</small>
+      </label>
     </div>
 
-    <div class="option-item">
-      <div class="option-item__input">
-        <label class="switch">
-          <input type="checkbox" id="markerLinks" class="saveOnChange">
-          <span class="slider round"></span>
-        </label>
-      </div>
-      <div class="option-item__description">
-        Marker external links
-      </div>
-    </div>
   </div>
   <script src="../main.js"></script>
   <script src="options.js"></script>

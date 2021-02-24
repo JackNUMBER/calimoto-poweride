@@ -20,6 +20,9 @@ const CustomStyles = {
           .MuiListItem-root {
             white-space: nowrap;
           }
+          .SearchAndLocation .MuiAutocomplete-root input {
+            padding-left: 20px !important;
+          }
         `;
 
       // smaller font-size

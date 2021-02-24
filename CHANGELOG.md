@@ -1,6 +1,10 @@
 # Changelog
 
 ## [Unreleased]
+### Added
+- Settings description
+- Settings text clickable
+- Quick design fix on map searchbar
 ### Fixed
 - External links on the same line when the location is short (#1)
 
