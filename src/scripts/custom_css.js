@@ -48,7 +48,7 @@ const CustomStyles = {
             align-items: start;
           }
           .PopupMarker .MarkerAndPoiNameLink .location {
-            display: inline-block;
+            display: block;
             margin-bottom: 5px;
           }
           .PopupMarker .MarkerAndPoiNameLink .external-link {
