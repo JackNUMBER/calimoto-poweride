@@ -39,11 +39,13 @@
       "src/main.js",
       "src/scripts/custom_css.js",
       "src/scripts/waypoints.js",
+      "src/scripts/waypoints_list.js",
       "src/injector.js"
     ]
   }],
   "web_accessible_resources": [
-    "src/inject_console_listener.js"
+    "src/inject_console_listener.js",
+    "src/images/*"
   ],
   "background": {
     "scripts": [

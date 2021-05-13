@@ -12,6 +12,7 @@ const CustomStyles = {
    * Custom styles' store
    */
   get: (styles) => {
+    // TODO: replace by an array
     switch (styles) {
 
       // global design fixes
@@ -66,6 +67,26 @@ const CustomStyles = {
           }
         `;
 
+      // marker popup edit
+      case 'waypoints':
+        return `
+          #routingSelector {
+            /* all style come from .SidebarRoutePoint */
+            justify-content: center;
+          }
+          #routingSelector .label {
+            padding-right: 10px;
+          }
+          #routingSelector .btn {
+            background: none;
+            border: none;
+          }
+          #routingSelector .btn .icon {
+            width: 28px;
+            height: 28px;
+          }
+        `;
+
       default:
         return;
     }
@@ -77,6 +98,9 @@ const CustomStyles = {
    */
   set: () => {
     browserHandle.storage.local.get(['smallerFont', 'biggerSearchbar', 'markerLinks'], result => {
+      // TODO: conditional style + option
+      CustomStyles.output += CustomStyles.get('waypoints');
+      // TODO: end
       CustomStyles.output += CustomStyles.get('base');
       if (result.smallerFont === true) {
         CustomStyles.output += CustomStyles.get('fontSize');

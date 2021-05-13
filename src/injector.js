@@ -15,6 +15,7 @@ const setup = () => {
   });
 
   CustomStyles.set();
+  WaypointsList.set();
 }
 
 /**

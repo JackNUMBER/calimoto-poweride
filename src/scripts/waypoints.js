@@ -44,14 +44,14 @@ const Popup = {
           waited += interval;
 
           if (!!document.querySelector(selector)) {
-            return resolve()
+            return resolve();
           }
 
           if (waited >= timeoutInSeconds * 1000) {
-            return reject()
+            return reject();
           }
-          console.log('waited', waited)
-          wait(interval)
+
+          wait(interval);
         }, interval)
       };
 
@@ -86,7 +86,7 @@ const Popup = {
 
         <a href="https://www.waze.com/ul?ll=${Popup.markerProperties.lat},${Popup.markerProperties.lng}&zoom=15" target="_blank" class="external-link waze" title="Waze">
           <svg viewBox="-467 269 24 24">
-            <path style="fill:#FFF;" d="M-446.5,275.6c0.7,0.9,1.1,2,1.4,3.2c0.2,1.3,0.1,2.5-0.3,3.7c-0.4,1.2-1.1,2.2-2,3.1
+            <path style="fill:#FFFFFF;" d="M-446.5,275.6c0.7,0.9,1.1,2,1.4,3.2c0.2,1.3,0.1,2.5-0.3,3.7c-0.4,1.2-1.1,2.2-2,3.1
               c-0.7,0.6-1.4,1.2-2.3,1.6c0.4,1.1-0.1,2.3-1.2,2.7c-0.2,0.1-0.5,0.1-0.7,0.1c-1.1,0-2-0.9-2.1-2c-0.3,0-2.6,0-3.1,0
               c-0.1,1.1-1.1,2-2.3,1.9c-1.1-0.1-1.9-1-1.9-2c0-0.2,0-0.4,0.1-0.6c-1.6-0.5-3-1.5-4-2.9c-0.3-0.4-0.2-1.1,0.2-1.4
               c0.2-0.1,0.4-0.2,0.6-0.2c0.7,0,1-0.3,1.2-0.6c0.2-0.7,0.4-1.5,0.4-2.2c0-0.5,0.1-1.1,0.2-1.6c0.4-1.7,1.3-3.3,2.7-4.4
