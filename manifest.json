@@ -1,7 +1,7 @@
 {
   "name": "Calimoto Enhancer",
   "version": "1.0.2",
-  "description": "Add some welcome changes to Calimoto web Trip Planner",
+  "description": "Upgrade the Calimoto Tour Planner web experience by adding new features",
   "author": "Jack NUMBER",
   "manifest_version": 2,
   "icons": {
