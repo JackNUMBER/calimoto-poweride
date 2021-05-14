@@ -4,6 +4,12 @@
   "description": "Upgrade the Calimoto Tour Planner web experience by adding new features",
   "author": "Jack NUMBER",
   "manifest_version": 2,
+  "applications": {
+    "gecko": {
+        "id": "calimoto@jacknumber.fr",
+        "strict_min_version": "48.0"
+    }
+},
   "icons": {
     "512": "src/images/icon512.png"
   },
