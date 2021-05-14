@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/hero.png" height="240" align="center">
+  <img src="doc/hero.png" height="240" align="center">
 </p>
 
 This browser extension add some features to the web Calimoto's Tour Planner:
