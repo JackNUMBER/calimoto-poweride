@@ -7,7 +7,7 @@
   "applications": {
     "gecko": {
         "id": "calimoto@jacknumber.fr",
-        "strict_min_version": "48.0"
+        "strict_min_version": "57.0"
     }
 },
   "icons": {
