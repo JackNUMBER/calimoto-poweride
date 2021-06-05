@@ -11,11 +11,19 @@
     }
 },
   "icons": {
-    "512": "src/images/icon512.png"
+    "16": "src/images/icon16.png",
+    "24": "src/images/icon24.png",
+    "32": "src/images/icon32.png",
+    "48": "src/images/icon48.png",
+    "128": "src/images/icon128.png"
   },
   "browser_action": {
     "default_icon": {
-      "32": "src/images/icon32.png"
+      "16": "src/images/icon16.png",
+      "24": "src/images/icon24.png",
+      "32": "src/images/icon32.png",
+      "48": "src/images/icon48.png",
+      "128": "src/images/icon128.png"
     },
     "default_popup": "src/options/options.html"
   },
