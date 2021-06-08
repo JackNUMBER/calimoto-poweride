@@ -8,8 +8,6 @@ const reactAppSelector = '.PlannerComponent';
 const setup = () => {
   console.log('🌮 Calimoto Enhancer started');
 
-  CalimotoEnhancer.matches = true;
-
   CustomStyles.set();
 
   browserHandle.storage.local.get(['markerLinks'], result => {
