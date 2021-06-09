@@ -44,5 +44,11 @@
   }],
   "web_accessible_resources": [
     "src/inject_console_listener.js"
-  ]
+  ],
+  "background": {
+    "scripts": [
+      "src/main.js",
+      "src/init.js"
+    ]
+  }
 }

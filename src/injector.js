@@ -8,13 +8,13 @@ const reactAppSelector = '.PlannerComponent';
 const setup = () => {
   console.log('🌮 Calimoto Enhancer started');
 
-  CustomStyles.set();
-
   browserHandle.storage.local.get(['markerLinks'], result => {
     if (result.markerLinks === true) {
       Waypoints.set();
     }
   });
+
+  CustomStyles.set();
 }
 
 /**
