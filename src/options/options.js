@@ -18,7 +18,7 @@ const options = {
    * Get settings from chrome.storage
    */
   load: () => {
-    browserHandle.storage.local.get(settingsItems, result => {
+    browserHandle.storage.local.get(optionsItems, result => {
       document.getElementById('smallerFont').checked = result.smallerFont;
       document.getElementById('biggerSearchbar').checked = result.biggerSearchbar;
       document.getElementById('markerLinks').checked = result.markerLinks;
