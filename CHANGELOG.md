@@ -7,6 +7,7 @@
 - Quick design fix on map searchbar
 ### Fixed
 - External links on the same line when the location is short (#1)
+- The extension is now setup on the installation (#13)
 
 ## [1.0.2] - 2021-02-15
 ### Added
