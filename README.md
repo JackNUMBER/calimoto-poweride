@@ -12,4 +12,4 @@ Being a passionate biker I use the Calimoto mobile app a lot for my rides. I alw
 **For the Calimoto team:** please understand it's not a "hack" of your app, only a way to enhance it.
 
 ## How to install it without browser store?
-➡ Go to [Releases page](https://github.com/JackNUMBER/calimoto-enhancer/releases) to download the latest source files and follow [these steps](https://gist.github.com/JackNUMBER/a9c0eeeb7b0bafcb5bf377fe79f637a8).
+➡ Go to [Releases page](https://github.com/JackNUMBER/calimoto-poweride/releases) to download the latest source files and follow [these steps](https://gist.github.com/JackNUMBER/a9c0eeeb7b0bafcb5bf377fe79f637a8).

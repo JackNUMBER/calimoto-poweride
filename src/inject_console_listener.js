@@ -7,7 +7,7 @@ setTimeout(function() {
   // replace console.log
   console.log = (...args) => {
     // send the console.log content to the extension
-    document.dispatchEvent(new CustomEvent('calimotoEnhancer_bip_bip', {
+    document.dispatchEvent(new CustomEvent('calimotoPoweride_bip_bip', {
       detail: {...args}
     }));
 

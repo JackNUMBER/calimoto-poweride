@@ -15,7 +15,7 @@ const ConsoleInterceptor = {
   },
 
   listen: () => {
-    document.addEventListener('calimotoEnhancer_bip_bip', message => {
+    document.addEventListener('calimotoPoweride_bip_bip', message => {
       if (message.detail[0] === undefined) return;
 
       if (

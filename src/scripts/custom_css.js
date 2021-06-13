@@ -1,6 +1,6 @@
 'use strict';
 
-const providerName = 'CalimotoEnhancer';
+const providerName = 'CalimotoPoweride';
 
 /**
  * Manage new styles

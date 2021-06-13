@@ -6,7 +6,7 @@ const reactAppSelector = '.PlannerComponent';
  * Init the Web Extension features
  */
 const setup = () => {
-  console.log('🌮 Calimoto Enhancer started');
+  console.log('🌮 Calimoto Poweride started');
 
   browserHandle.storage.local.get(['markerLinks'], result => {
     if (result.markerLinks === true) {
