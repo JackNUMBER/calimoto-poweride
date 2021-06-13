@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased]
+
+## [1.1.0] - 2021-06-13
 ### Added
 - Settings description
 - Settings text clickable
