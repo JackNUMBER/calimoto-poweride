@@ -1,7 +1,8 @@
 # Changelog
 
 ## [Unreleased]
-
+### Fixed
+- Apply default font-family on option page (#16)
 ## [1.1.0] - 2021-06-13
 ### Added
 - Settings description
