@@ -7,50 +7,56 @@
 <body>
   <header>
     <img src="../images/icon32.png" class="icon" /> Calimoto Poweride
-    <button id="refresh" class="hidden">Refresh page</button>
   </header>
-  <div class="option-list">
+  <section>
+    <div class="option-list">
 
-    <div class="option-item">
-      <div class="option-item__input">
-        <label class="switch">
-          <input type="checkbox" id="markerLinks" class="saveOnChange">
-          <span class="slider round"></span>
+      <div class="option-item">
+        <div class="option-item__input">
+          <label class="switch">
+            <input type="checkbox" id="markerLinks" class="saveOnChange">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <label class="option-item__description" for="markerLinks">
+          Links to Maps and Waze
+          <small>Display exertnal links on the marker popup</small>
         </label>
       </div>
-      <label class="option-item__description" for="markerLinks">
-        Links to Maps and Waze
-        <small>Display exertnal links on the marker popup</small>
-      </label>
-    </div>
 
-    <div class="option-item">
-      <div class="option-item__input">
-        <label class="switch">
-          <input type="checkbox" id="smallerFont" class="saveOnChange">
-          <span class="slider round"></span>
+      <div class="option-item">
+        <div class="option-item__input">
+          <label class="switch">
+            <input type="checkbox" id="smallerFont" class="saveOnChange">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <label class="option-item__description" for="smallerFont">
+          Smaller font size
+          <small>Reduce global font size for better readability</small>
         </label>
       </div>
-      <label class="option-item__description" for="smallerFont">
-        Smaller font size
-        <small>Reduce global font size for better readability</small>
-      </label>
-    </div>
 
-    <div class="option-item">
-      <div class="option-item__input">
-        <label class="switch">
-          <input type="checkbox" id="biggerSearchbar" class="saveOnChange">
-          <span class="slider round"></span>
+      <div class="option-item">
+        <div class="option-item__input">
+          <label class="switch">
+            <input type="checkbox" id="biggerSearchbar" class="saveOnChange">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <label class="option-item__description" for="biggerSearchbar">
+          Bigger map searchbar
+          <small>Increase searchbar size to display more text</small>
         </label>
       </div>
-      <label class="option-item__description" for="biggerSearchbar">
-        Bigger map searchbar
-        <small>Increase searchbar size to display more text</small>
-      </label>
+
     </div>
 
+    <div class="saved hidden" id="refresh">
+      <span class="green">Settings saved.</span>
+      <small>You can reload Calimoto.</small>
   </div>
+  </section>
   <script src="../main.js"></script>
   <script src="options.js"></script>
 </body>

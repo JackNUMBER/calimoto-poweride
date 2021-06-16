@@ -9,9 +9,9 @@ const options = {
       smallerFont: document.getElementById('smallerFont').checked,
       biggerSearchbar: document.getElementById('biggerSearchbar').checked,
       markerLinks: document.getElementById('markerLinks').checked,
-    });
+    }, success);
 
-    document.querySelector('#refresh').classList.remove('hidden');
+
   },
 
   /**
@@ -26,21 +26,29 @@ const options = {
   },
 }
 
+/**
+ * Display a success feedback
+ * @returns Display
+ */
+const success = () => {
+  const refreshClassList = document.querySelector('#refresh').classList;
+
+  // make feedback blinks
+  if (!refreshClassList.contains('hidden')) {
+    document.querySelector('#refresh').classList.add('hidden');
+    setTimeout(() => {
+      document.querySelector('#refresh').classList.remove('hidden');
+    }, 300);
+    return;
+  }
+
+  document.querySelector('#refresh').classList.remove('hidden');
+}
+
 
 // when HTML is ready (no matter all assets are loaded)
 document.addEventListener('DOMContentLoaded', () => {
   options.load();
-
-  // refresh the page to apply settings
-  // TODO: find a solution to update page UI without this button (Message Passing?)
-  document.querySelector('#refresh').addEventListener('click', (e) => {
-    browserHandle.tabs.getSelected(null, function(tab) {
-      browserHandle.tabs.executeScript(tab.id, {
-        code: 'window.location.reload();'
-      });
-    });
-    e.currentTarget.classList.add('hidden');
-  });
 });
 
 // save

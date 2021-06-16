@@ -29,7 +29,7 @@ header .icon {
   top: -1px;
 }
 
-.option-list {
+section {
   padding: 30px 20px;
 }
 
@@ -128,6 +128,22 @@ button:hover {
 
 }
 
-.hidden {
-  display: none;
+/* saved feedback */
+.saved {
+  margin-top: 15px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.saved.hidden {
+  opacity: 0;
+}
+
+.saved small {
+  color: #818c9a;
+}
+
+.saved .green {
+  color: #01af4f;
+  font-weight: bold;
 }
