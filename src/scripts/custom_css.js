@@ -71,19 +71,22 @@ const CustomStyles = {
       case 'waypoints':
         return `
           #routingSelector {
-            /* all style come from .SidebarRoutePoint */
+            flex-wrap: wrap;
             justify-content: center;
+            min-width: 200px;
+            padding-bottom: 0;
           }
           #routingSelector .label {
-            padding-right: 10px;
+            width: 100%;
+            margin-bottom: 5px;
           }
           #routingSelector .btn {
             background: none;
             border: none;
           }
           #routingSelector .btn .icon {
-            width: 28px;
-            height: 28px;
+            min-width: 28px;
+            min-height: 28px;
           }
         `;
 

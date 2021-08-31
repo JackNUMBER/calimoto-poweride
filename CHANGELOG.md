@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased]
+### Added
+- Add routing selector to change all route type in one time (#8)
 ### Fixed
 - Apply default font-family on option page (#16)
 ## [1.1.0] - 2021-06-13
