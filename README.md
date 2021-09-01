@@ -1,9 +1,16 @@
 <p align="center">
-  <img src="doc/hero.png" height="240" align="center">
+  <a href="https://chrome.google.com/webstore/detail/gbjkklkjohmpklkamcnbpmaoohgleghi" title="Go to Chrome Web Store">
+    <img src="doc/badge_chrome.png" align="center" alt="Chrome">
+  </a>
+  &nbsp;
+  <a href="https://addons.mozilla.org/firefox/addon/calimoto-poweride/" title="Go to Firefox Add-on Store">
+    <img src="doc/badge_firefox.png" align="center" alt="Firefox">
+  </a>
 </p>
 
 This browser extension add some features to the web Calimoto's Tour Planner:
 - Links to externals services
+- One button routing change for all points
 - Design changes (like bigger search bar and font size)
 
 ## Why this extension?
