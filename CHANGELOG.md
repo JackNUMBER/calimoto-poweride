@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased]
+
+## [1.2.0] - 2021-09-01
 ### Added
 - Add routing selector to change all route type in one time (#8)
 ### Fixed
