@@ -8,7 +8,7 @@ const reactAppSelector = '.PlannerComponent';
 const setup = () => {
   console.log('🌮 Calimoto Poweride started');
 
-  browserHandle.storage.local.get(['markerLinks'], result => {
+  browserHandle.storage.local.get(['markerLinks'], (result) => {
     if (result.markerLinks === true) {
       Waypoints.set();
     }
@@ -16,7 +16,7 @@ const setup = () => {
 
   CustomStyles.set();
   WaypointsList.set();
-}
+};
 
 /**
  * Wait the React app loaded
@@ -32,19 +32,19 @@ const waitForAppReady = (timeoutInSeconds = 10) => {
         waited += interval;
 
         if (!!document.querySelector(reactAppSelector)) {
-          return resolve()
+          return resolve();
         }
 
         if (waited >= timeoutInSeconds * 1000) {
-          return reject()
+          return reject();
         }
 
-        wait(interval)
-      }, interval)
+        wait(interval);
+      }, interval);
     };
 
     wait(100);
-  })
-}
+  });
+};
 
 const promise = waitForAppReady().then(setup);
