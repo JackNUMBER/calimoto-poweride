@@ -14,7 +14,6 @@ const CustomStyles = {
   get: (styles) => {
     // TODO: replace by an array
     switch (styles) {
-
       // global design fixes
       case 'base':
         return `
@@ -61,7 +60,7 @@ const CustomStyles = {
           .PopupMarker .MarkerAndPoiNameLink .external-link.waze {
             margin-left: 4px;
           }
-          .PopupMarker .MarkerAndPoiNameLink .external-link svg {
+          .PopupMarker .MarkerAndPoiNameLink .external-link .icon {
             width: 32px;
             height: 32px;
           }
@@ -93,29 +92,31 @@ const CustomStyles = {
       default:
         return;
     }
-
   },
 
   /**
    * Get all the needed styles before inject it
    */
   set: () => {
-    browserHandle.storage.local.get(['smallerFont', 'biggerSearchbar', 'markerLinks'], result => {
-      // TODO: conditional style + option
-      CustomStyles.output += CustomStyles.get('waypoints');
-      // TODO: end
-      CustomStyles.output += CustomStyles.get('base');
-      if (result.smallerFont === true) {
-        CustomStyles.output += CustomStyles.get('fontSize');
-      }
-      if (result.biggerSearchbar === true) {
-        CustomStyles.output += CustomStyles.get('searchBar');
-      }
-      if (result.markerLinks === true) {
-        CustomStyles.output += CustomStyles.get('markerPopup');
-      }
-      CustomStyles.inject(CustomStyles.output);
-    });
+    browserHandle.storage.local.get(
+      ['smallerFont', 'biggerSearchbar', 'markerLinks'],
+      (result) => {
+        // TODO: conditional style + option
+        CustomStyles.output += CustomStyles.get('waypoints');
+        // TODO: end
+        CustomStyles.output += CustomStyles.get('base');
+        if (result.smallerFont === true) {
+          CustomStyles.output += CustomStyles.get('fontSize');
+        }
+        if (result.biggerSearchbar === true) {
+          CustomStyles.output += CustomStyles.get('searchBar');
+        }
+        if (result.markerLinks === true) {
+          CustomStyles.output += CustomStyles.get('markerPopup');
+        }
+        CustomStyles.inject(CustomStyles.output);
+      },
+    );
   },
 
   /**
@@ -134,11 +135,11 @@ const CustomStyles = {
    * @param {string} content style properties inside the <style>
    */
   inject: (content) => {
-  if (content !== '') {
+    if (content !== '') {
       let styleSheets = document.createElement('style');
       styleSheets.setAttribute('provider', providerName);
       styleSheets.innerHTML = content;
       document.head.appendChild(styleSheets);
     }
-  }
-}
+  },
+};
