@@ -50,17 +50,16 @@ const CustomStyles = {
           .PopupMarker .MapPopupMarkerAddressAndDeleteButton {
             align-items: start;
           }
-          .PopupMarker .MarkerAndPoiNameLink .location {
-            display: block;
-            margin-bottom: 5px;
+          .PopupMarker .calimoto-poweride {
+            margin-top: 5px;
           }
-          .PopupMarker .MarkerAndPoiNameLink .external-link {
+          .PopupMarker .calimoto-poweride .external-link {
             display: inline-block;
           }
-          .PopupMarker .MarkerAndPoiNameLink .external-link.waze {
+          .PopupMarker .calimoto-poweride .external-link.waze {
             margin-left: 4px;
           }
-          .PopupMarker .MarkerAndPoiNameLink .external-link .icon {
+          .PopupMarker .calimoto-poweride .external-link .icon {
             width: 32px;
             height: 32px;
           }

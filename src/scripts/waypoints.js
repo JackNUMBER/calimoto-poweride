@@ -18,6 +18,7 @@ const ConsoleInterceptor = {
     document.addEventListener('calimotoPoweride_bip_bip', (message) => {
       if (message.detail[0] === undefined) return;
 
+      // check if it's a message about marker
       if (
         !!message.detail[0].properties &&
         message.detail[0].properties.popupType === 'marker'
@@ -33,7 +34,7 @@ const ConsoleInterceptor = {
  * Edit marker Popup
  */
 const Popup = {
-  markerProperties: '',
+  markerProperties: {},
 
   waitForElementReady: (selector, timeoutInSeconds = 3) => {
     return new Promise((resolve, reject) => {
@@ -59,10 +60,9 @@ const Popup = {
     });
   },
 
-  getExternalLinksHtml: (location) => {
+  getExternalLinksHtml: () => {
     return `
-      <div class="calimoto-enhnancer">
-        <span class="location">${location}</span>
+      <div class="calimoto-poweride">
         <a href="https://www.instantstreetview.com/s/${
           Popup.markerProperties.lat
         },${
@@ -95,30 +95,26 @@ const Popup = {
   },
 
   edit: () => {
-    // remove icon (to avoid a "launch" text at the end of the location)
     document
-      .querySelector('.PopupMarker .MarkerAndPoiNameLink a .material-icons')
-      .remove();
+      .querySelector('.PopupMarker .MarkerAndPoiNameLink')
+      .insertAdjacentHTML('beforeEnd', Popup.getExternalLinksHtml());
+  },
 
-    // get location name
-    const location = document.querySelector(
-      '.PopupMarker .MarkerAndPoiNameLink a',
-    ).innerText;
-    document.querySelector('.PopupMarker .MarkerAndPoiNameLink a').remove();
-
-    document.querySelector('.PopupMarker .MarkerAndPoiNameLink').innerHTML =
-      Popup.getExternalLinksHtml(location);
+  update: () => {
+    document.querySelector(
+      '.PopupMarker .MarkerAndPoiNameLink .calimoto-poweride',
+    ).innerHTML = Popup.getExternalLinksHtml();
   },
 
   set: () => {
-    // check if the new UI is already set
-    // currently buggy: if the user click on an other marker, the UI is not refreshed (then link on icon doesn't)
     if (
       !!document.querySelector(
-        '.PopupMarker .MarkerAndPoiNameLink .calimoto-enhnancer',
+        '.PopupMarker .MarkerAndPoiNameLink .calimoto-poweride',
       )
-    )
+    ) {
+      Popup.update();
       return;
+    }
 
     const promise = Popup.waitForElementReady(
       '.PopupMarker .MarkerAndPoiNameLink',
