@@ -1,6 +1,10 @@
 # Changelog
 
 ## [Unreleased]
+### Fixed
+- Marker popup's external links are now updated when you switch from a marker to another
+### Changed
+- Icons (SVG) are now file asset instead of inline code
 
 ## [1.2.0] - 2021-09-01
 ### Added
