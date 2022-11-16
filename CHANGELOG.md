@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased]
+
+## [1.2.1] - 2022-11-16
 ### Fixed
 - Marker popup's external links are now updated when you switch from a marker to another
 ### Changed
