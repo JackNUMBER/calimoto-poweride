@@ -1,9 +1,8 @@
-
 name: Auto-release
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
     paths: 'manifest.json'
 jobs:
   create-release:
@@ -16,12 +15,11 @@ jobs:
       - name: Check if version has been updated
         id: checkVersion
         uses: EndBug/version-check@v1
-
         with:
           diff-search: true
           file-name: ./manifest.json
           # Only needed when running the action on private repostiories
-          token: ${{ secrets.PRIVATE_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Version doesn't change
         if: steps.checkVersion.outputs.changed != 'true'
@@ -38,13 +36,13 @@ jobs:
         uses: negz/create-tag@v1
         with:
           version: v${{ steps.checkVersion.outputs.version }}
-          token: ${{ secrets.PRIVATE_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create Release
         if: steps.checkVersion.outputs.changed == 'true'
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.PRIVATE_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: v${{ steps.checkVersion.outputs.version }}
           release_name: v${{ steps.checkVersion.outputs.version }}
@@ -66,5 +64,5 @@ jobs:
         if: steps.checkVersion.outputs.changed == 'true'
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.PRIVATE_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
