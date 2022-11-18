@@ -65,6 +65,24 @@ const CustomStyles = {
           }
         `;
 
+      //  favorite popup edit
+      case 'favoritePopup':
+        return `
+          .MapPopupFavoriteContentLeft .calimoto-poweride {
+            margin-top: 5px;
+          }
+          .MapPopupFavoriteContentLeft .calimoto-poweride .external-link {
+            display: inline-block;
+          }
+          .MapPopupFavoriteContentLeft .calimoto-poweride .external-link.waze {
+            margin-left: 4px;
+          }
+          .MapPopupFavoriteContentLeft .calimoto-poweride .external-link .icon {
+            width: 32px;
+            height: 32px;
+          }
+        `;
+
       // marker popup edit
       case 'waypoints':
         return `
@@ -112,6 +130,7 @@ const CustomStyles = {
         }
         if (result.markerLinks === true) {
           CustomStyles.output += CustomStyles.get('markerPopup');
+          CustomStyles.output += CustomStyles.get('favoritePopup');
         }
         CustomStyles.inject(CustomStyles.output);
       },

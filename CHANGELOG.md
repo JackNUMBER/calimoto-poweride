@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased]
+### Fixed
+- Favorite popup's now have external links (#15)
 
 ## [1.2.1] - 2022-11-16
 ### Fixed
@@ -13,6 +15,7 @@
 - Add routing selector to change all route type in one time (#8)
 ### Fixed
 - Apply default font-family on option page (#16)
+
 ## [1.1.0] - 2021-06-13
 ### Added
 - Settings description
