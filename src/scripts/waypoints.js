@@ -62,61 +62,61 @@ const Popup = {
 
   getExternalLinksHtml: () => {
     return `
-      <div class="calimoto-poweride">
-        <a href="https://www.instantstreetview.com/s/${
-          Popup.markerProperties.lat
-        },${
-      Popup.markerProperties.lng
-    }" target="_blank" class="external-link street-view" title="Street View">
-          <img class="icon" src="${chrome.extension.getURL(
-            'src/images/street_view.svg',
-          )}" />
-        </a>
+    <a href="https://www.instantstreetview.com/s/${Popup.markerProperties.lat},
+      ${Popup.markerProperties.lng}"
+      target="_blank" class="external-link street-view" title="Street View"
+    >
+      <img class="icon" src="${chrome.extension.getURL(
+        'src/images/street_view.svg',
+      )}" />
+    </a>
 
-        <a href="https://www.google.fr/maps/place/${
-          Popup.markerProperties.lat
-        },${Popup.markerProperties.lng}/@${Popup.markerProperties.lat},${
-      Popup.markerProperties.lng
-    },15z" target="_blank" class="external-link google-maps" title="Google Maps">
-          <img class="icon" src="${chrome.extension.getURL(
-            'src/images/maps.svg',
-          )}" />
-        </a>
+    <a href="https://www.google.fr/maps/place/${Popup.markerProperties.lat},
+      ${Popup.markerProperties.lng}/@
+      ${Popup.markerProperties.lat},
+      ${Popup.markerProperties.lng},
+      15z"
+      target="_blank" class="external-link google-maps" title="Google Maps"
+    >
+      <img class="icon" src="${chrome.extension.getURL(
+        'src/images/maps.svg',
+      )}" />
+    </a>
 
-        <a href="https://www.waze.com/ul?ll=${Popup.markerProperties.lat},${
-      Popup.markerProperties.lng
-    }&zoom=15" target="_blank" class="external-link waze" title="Waze">
-          <img class="icon" src="${chrome.extension.getURL(
-            'src/images/waze.svg',
-          )}" />
-        </a>
-      </div>
+    <a href="https://www.waze.com/ul?ll=${Popup.markerProperties.lat},
+      ${Popup.markerProperties.lng}
+      &zoom=15"
+      target="_blank" class="external-link waze" title="Waze"
+    >
+      <img class="icon" src="${chrome.extension.getURL(
+        'src/images/waze.svg',
+      )}" />
+    </a>
     `;
   },
 
   edit: () => {
-    document
-      .querySelector('.PopupMarker .MarkerAndPoiNameLink')
-      .insertAdjacentHTML('beforeEnd', Popup.getExternalLinksHtml());
-  },
+    if (
+      !document.querySelector(
+        '.PopupMarker .MarkerAndPoiNameLink .calimoto-poweride',
+      )
+    ) {
+      document
+        .querySelector('.PopupMarker .MarkerAndPoiNameLink')
+        .insertAdjacentHTML(
+          'beforeEnd',
+          '<div class="calimoto-poweride"></div>',
+        );
+    }
 
-  update: () => {
     document.querySelector(
       '.PopupMarker .MarkerAndPoiNameLink .calimoto-poweride',
     ).innerHTML = Popup.getExternalLinksHtml();
   },
 
   set: () => {
-    if (
-      !!document.querySelector(
-        '.PopupMarker .MarkerAndPoiNameLink .calimoto-poweride',
-      )
-    ) {
-      Popup.update();
-      return;
-    }
-
     const promise = Popup.waitForElementReady(
+      // refactor with .MapPopup?
       '.PopupMarker .MarkerAndPoiNameLink',
     ).then(() => Popup.edit());
   },
