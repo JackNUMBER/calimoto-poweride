@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased]
+
+## [1.2.2] - 2022-11-18
 ### Fixed
 - Favorite popup's now have external links (#15)
 
