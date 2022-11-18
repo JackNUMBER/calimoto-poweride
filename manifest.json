@@ -1,15 +1,15 @@
 {
   "name": "Calimoto Poweride",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Upgrade the Calimoto Tour Planner web experience by adding new features",
   "author": "Jack NUMBER",
   "manifest_version": 2,
   "applications": {
     "gecko": {
-        "id": "calimoto@jacknumber.fr",
-        "strict_min_version": "57.0"
+      "id": "calimoto@jacknumber.fr",
+      "strict_min_version": "57.0"
     }
-},
+  },
   "icons": {
     "16": "src/images/icon16.png",
     "24": "src/images/icon24.png",
@@ -27,30 +27,24 @@
     },
     "default_popup": "src/options/options.html"
   },
-  "permissions": [
-    "storage",
-    "https://calimoto.com/*"
+  "permissions": ["storage", "https://calimoto.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://calimoto.com/*"],
+      "js": [
+        "src/main.js",
+        "src/scripts/custom_css.js",
+        "src/scripts/waypoints.js",
+        "src/scripts/waypoints_list.js",
+        "src/injector.js"
+      ]
+    }
   ],
-  "content_scripts": [{
-    "matches": [
-      "https://calimoto.com/*"
-    ],
-    "js": [
-      "src/main.js",
-      "src/scripts/custom_css.js",
-      "src/scripts/waypoints.js",
-      "src/scripts/waypoints_list.js",
-      "src/injector.js"
-    ]
-  }],
   "web_accessible_resources": [
     "src/inject_console_listener.js",
     "src/images/*"
   ],
   "background": {
-    "scripts": [
-      "src/main.js",
-      "src/init.js"
-    ]
+    "scripts": ["src/main.js", "src/init.js"]
   }
 }
