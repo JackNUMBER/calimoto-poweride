@@ -47,4 +47,29 @@ const waitForAppReady = (timeoutInSeconds = 10) => {
   });
 };
 
-const promise = waitForAppReady().then(setup);
+/**
+ * Intercept console
+ */
+const ConsoleInterceptor = {
+  inject: () => {
+    // TODO: replace this file by a <script> injection
+    const script = document.createElement('script');
+    script.src = chrome.extension.getURL('src/console_listener.js');
+    (document.head || document.documentElement).appendChild(script);
+    script.onload = function () {
+      script.remove();
+    };
+  },
+
+  listen: (callback) => {
+    document.addEventListener('calimotoPoweride_bip_bip', (message) => {
+      // check if there is some content provided into the console.log from the website
+      if (message.detail[0] === undefined) return;
+
+      callback(message);
+    });
+  },
+};
+
+waitForAppReady().then(setup);
+ConsoleInterceptor.inject();

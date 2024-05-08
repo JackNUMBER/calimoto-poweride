@@ -6,36 +6,6 @@ const popupWaypointSelector = '.PopupMarker .MarkerAndPoiNameLink';
 const popupFavoriteSelector = '.MapPopup .MapPopupFavoriteContentLeft';
 
 /**
- * Intercept console
- */
-const ConsoleInterceptor = {
-  inject: () => {
-    // TODO: replace this file by a <script> injection
-    const script = document.createElement('script');
-    script.src = chrome.extension.getURL('src/console_listener.js');
-    (document.head || document.documentElement).appendChild(script);
-    script.onload = function () {
-      script.remove();
-    };
-  },
-
-  listen: () => {
-    document.addEventListener('calimotoPoweride_bip_bip', (message) => {
-      if (message.detail[0] === undefined) return;
-
-      // check if it's a message about marker
-      if (
-        !!message.detail[0].properties &&
-        ['marker', 'favorite'].includes(message.detail[0].properties.popupType)
-      ) {
-        Popup.markerProperties = message.detail[0].properties;
-        Popup.set();
-      }
-    });
-  },
-};
-
-/**
  * Edit marker Popup
  */
 const Popup = {
@@ -148,9 +118,19 @@ const Popup = {
   },
 };
 
+function consoleMesageAction(message) {
+  // check if it's a message about marker
+  if (
+    !!message.detail[0].properties &&
+    ['marker', 'favorite'].includes(message.detail[0].properties.popupType)
+  ) {
+    Popup.markerProperties = message.detail[0].properties;
+    Popup.set();
+  }
+}
+
 const Waypoints = {
   set: () => {
-    ConsoleInterceptor.inject();
-    ConsoleInterceptor.listen();
+    ConsoleInterceptor.listen(consoleMesageAction);
   },
 };
