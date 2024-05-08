@@ -32,7 +32,7 @@
     {
       "matches": ["https://calimoto.com/*"],
       "js": [
-        "src/main.js",
+        "src/const.js",
         "src/scripts/custom_css.js",
         "src/scripts/waypoints.js",
         "src/scripts/waypoints_list.js",
@@ -45,6 +45,6 @@
     "src/images/*"
   ],
   "background": {
-    "scripts": ["src/main.js", "src/init.js"]
+    "scripts": ["src/const.js", "src/init.js"]
   }
 }
