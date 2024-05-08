@@ -87,10 +87,11 @@ const CustomStyles = {
       case 'waypoints':
         return `
           #routingSelector {
+            display: flex;
             flex-wrap: wrap;
             justify-content: center;
             min-width: 200px;
-            padding-bottom: 0;
+            padding: 8px 16px 0;
           }
           #routingSelector .label {
             width: 100%;

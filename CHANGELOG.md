@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased]
+### Fixed
+- Routing item menu integration (website apply CSS with changing class now)
 
 ## [1.2.2] - 2022-11-18
 ### Fixed

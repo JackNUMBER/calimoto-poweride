@@ -55,7 +55,7 @@ const WaypointsList = {
 
   getRoutingSelectorHtml: () => {
     return `
-      <div id="routingSelector" class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button">
+      <div id="routingSelector">
         <span class="label">Set route: </span>
         <button class="btn" data-routing-type="fastest">
           <img class="icon" src="${chrome.extension.getURL(
