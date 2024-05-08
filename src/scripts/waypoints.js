@@ -118,19 +118,19 @@ const Popup = {
   },
 };
 
-function consoleMesageAction(message) {
-  // check if it's a message about marker
-  if (
-    !!message.detail[0].properties &&
-    ['marker', 'favorite'].includes(message.detail[0].properties.popupType)
-  ) {
-    Popup.markerProperties = message.detail[0].properties;
-    Popup.set();
-  }
-}
-
 const Waypoints = {
+  consoleMessageAction: (message) => {
+    // check if it's a message about marker
+    if (
+      !!message.detail[0].properties &&
+      ['marker', 'favorite'].includes(message.detail[0].properties.popupType)
+    ) {
+      Popup.markerProperties = message.detail[0].properties;
+      Popup.set();
+    }
+  },
+
   set: () => {
-    ConsoleInterceptor.listen(consoleMesageAction);
+    ConsoleInterceptor.listen(Waypoints.consoleMessageAction);
   },
 };
