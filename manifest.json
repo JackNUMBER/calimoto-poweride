@@ -30,7 +30,13 @@
   "permissions": ["storage", "https://calimoto.com/*"],
   "content_scripts": [
     {
-      "matches": ["https://calimoto.com/*"],
+      "matches": [
+        "https://calimoto.com/de/motorrad-routenplaner",
+        "https://calimoto.com/en/motorcycle-trip-planner",
+        "https://calimoto.com/es/planificador-de-rutas",
+        "https://calimoto.com/fr/itineraires-moto",
+        "https://calimoto.com/it/itinerari-motociclistici"
+      ],
       "js": [
         "src/const.js",
         "src/scripts/custom_css.js",
