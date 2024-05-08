@@ -12,7 +12,7 @@ const ConsoleInterceptor = {
   inject: () => {
     // TODO: replace this file by a <script> injection
     const script = document.createElement('script');
-    script.src = chrome.extension.getURL('src/inject_console_listener.js');
+    script.src = chrome.extension.getURL('src/console_listener.js');
     (document.head || document.documentElement).appendChild(script);
     script.onload = function () {
       script.remove();

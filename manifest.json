@@ -40,10 +40,7 @@
       ]
     }
   ],
-  "web_accessible_resources": [
-    "src/inject_console_listener.js",
-    "src/images/*"
-  ],
+  "web_accessible_resources": ["src/console_listener.js", "src/images/*"],
   "background": {
     "scripts": ["src/const.js", "src/init.js"]
   }
