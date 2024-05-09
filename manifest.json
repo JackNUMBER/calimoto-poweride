@@ -42,6 +42,7 @@
         "src/scripts/custom_css.js",
         "src/scripts/waypoints.js",
         "src/scripts/waypoints_list.js",
+        "src/scripts/waypoints_hover.js",
         "src/injector.js"
       ]
     }

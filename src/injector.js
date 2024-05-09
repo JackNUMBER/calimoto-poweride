@@ -16,6 +16,7 @@ const setup = () => {
 
   CustomStyles.set();
   WaypointsList.set(); // TODO: make an option in settings for it
+  WaypointsHover.set(); // TODO: make an option in settings for it
 };
 
 /**
