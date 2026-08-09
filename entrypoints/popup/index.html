@@ -1,35 +1,50 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="options.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calimoto Poweride</title>
+  <meta name="manifest.type" content="browser_action" />
+  <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
   <header>
-    <img src="../images/icon32.png" class="icon" /> Calimoto Poweride
+    <img src="/icon/32.png" class="icon" alt="" /> Calimoto Poweride
   </header>
   <section>
     <div class="option-list">
-
       <div class="option-item">
         <div class="option-item__input">
           <label class="switch">
-            <input type="checkbox" id="markerLinks" class="saveOnChange">
+            <input type="checkbox" id="markerLinks" class="saveOnChange" />
             <span class="slider round"></span>
           </label>
         </div>
         <label class="option-item__description" for="markerLinks">
           Links to Maps and Waze
-          <small>Display exertnal links on the marker popup</small>
+          <small>Display external links on the map popup</small>
         </label>
       </div>
 
       <div class="option-item">
         <div class="option-item__input">
           <label class="switch">
-            <input type="checkbox" id="smallerFont" class="saveOnChange">
+            <input type="checkbox" id="routeProfiles" class="saveOnChange" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <label class="option-item__description" for="routeProfiles">
+          Route type selector
+          <small>Apply route type to every waypoint at once</small>
+        </label>
+      </div>
+
+      <div class="option-item">
+        <div class="option-item__input">
+          <label class="switch">
+            <input type="checkbox" id="smallerFont" class="saveOnChange" />
             <span class="slider round"></span>
           </label>
         </div>
@@ -42,7 +57,7 @@
       <div class="option-item">
         <div class="option-item__input">
           <label class="switch">
-            <input type="checkbox" id="biggerSearchbar" class="saveOnChange">
+            <input type="checkbox" id="biggerSearchbar" class="saveOnChange" />
             <span class="slider round"></span>
           </label>
         </div>
@@ -51,7 +66,6 @@
           <small>Increase searchbar size to display more text</small>
         </label>
       </div>
-
     </div>
 
     <div class="saved hidden" id="refresh">
@@ -59,8 +73,7 @@
       <small>You can reload Calimoto.</small>
     </div>
   </section>
-  <script src="../const.js"></script>
-  <script src="options.js"></script>
+  <script type="module" src="./main.ts"></script>
 </body>
 
 </html>

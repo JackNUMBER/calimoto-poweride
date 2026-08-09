@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: sans-serif;
+  font-family: system-ui, sans-serif;
   font-size: 15px;
   width: 350px;
   max-width: 100%;
@@ -11,12 +11,6 @@ header {
   font-size: 18px;
   color: #ccc;
   background-color: #434951;
-}
-
-header button {
-  position: absolute;
-  right: 12px;
-  top: 12px;
 }
 
 header .icon {
@@ -30,7 +24,7 @@ header .icon {
 }
 
 section {
-  padding: 30px 20px;
+  padding: 30px 20px 15px;
 }
 
 .option-item {
@@ -66,7 +60,7 @@ section {
   height: 0;
 }
 
-/* The slider */
+/* Toggle */
 .slider {
   position: absolute;
   cursor: pointer;
@@ -75,7 +69,6 @@ section {
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
@@ -87,7 +80,6 @@ section {
   left: 3px;
   bottom: 3px;
   background-color: white;
-  -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
@@ -100,8 +92,6 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(18px);
-  -ms-transform: translateX(18px);
   transform: translateX(18px);
 }
 
@@ -112,19 +102,6 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
-}
-
-button {
-  padding: 5px;
-  font-size: 13px;
-  color: #fff;
-  border: none;
-  background-color: #be2d2d;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #d43b3b;
 }
 
 /* saved feedback */

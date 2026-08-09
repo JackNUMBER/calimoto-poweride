@@ -1,8 +1,9 @@
 # Changelog
 
 ## [Unreleased]
-### Fixed
-- Routing item menu integration (website apply CSS with changing class now)
+
+## [2.0.0] - 2026-08-08
+- Marker popup's external links are now displayed on right click
 
 ## [1.2.2] - 2022-11-18
 ### Fixed
